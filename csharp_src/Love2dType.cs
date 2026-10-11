@@ -36,7 +36,6 @@ namespace Love
 
         internal static void Step()
         {
-            GC.WaitForPendingFinalizers();
             while (_objectDisposeQueue.TryDequeue(out var ptr))
             {
                 Release(ptr);
