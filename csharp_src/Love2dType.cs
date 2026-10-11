@@ -5,6 +5,7 @@
 // ** part of C# response for release **
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -25,7 +26,7 @@ namespace Love
         /// volatile (OpenGL)-related object is attempted to be reclaimed from inside a finalizer,
         /// its pointer is enqueued here and instead released when back on the main thread again.
         /// </summary>
-        internal static Queue<IntPtr> _objectDisposeQueue = new();
+        internal static ConcurrentQueue<IntPtr> _objectDisposeQueue = new();
         internal static Thread? _mainThread = null;
 
         internal static void Init()
